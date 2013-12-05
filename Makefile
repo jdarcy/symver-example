@@ -36,8 +36,7 @@ test: use_foo_1 use_foo_2 lib2.so broken.so
 	LD_LIBRARY_PATH=. ./use_foo_1
 	LD_LIBRARY_PATH=. ./use_foo_2
 	rm libfoo.so
-	@echo "*** Now for the broken part."
-	@echo "*** Same code + incorrect map = wrong answer."
+	@echo "*** Same code + incorrect map = segfault"
 	ln -s broken.so libfoo.so
 	LD_LIBRARY_PATH=. ./use_foo_1
 	rm libfoo.so
