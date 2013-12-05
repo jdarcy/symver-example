@@ -1,3 +1,20 @@
+# DANGER: the linker will grab the first version it finds for each symbol.  If
+# that's not the one which preserves old behavior, then old executables will
+# resolve to newer symbol versions and fail in mysterious ways.  For example:
+#
+#	program originally uses un-versioned function "foo"
+#	library is updated, "foo" becomes "foo_1_0"
+#	...but map file gives FOO_2.0 version first
+#	program runs, resolves "foo" to "foo_2_0"
+#	whoever has to debug that finds and kills you
+#	...and no jury would convict them
+#
+# The whole point of symbol versioning is to avoid this kind of mismatch
+# between what the program expected and what it actually got, isn't it?
+#
+# This file has things in the correct order.  See broken.map for a broken
+# version.
+
 FOO_1.0 {
    foo;
 };

@@ -1,0 +1,10 @@
+# This is an example of how to break stuff by specifying versions in the wrong
+# order.  See lib2.map for a more detailed explanation.
+
+FOO_2.0 {
+   foo;
+};
+
+FOO_1.0 {
+   foo;
+};
