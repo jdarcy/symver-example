@@ -8,8 +8,8 @@ use_foo_1: use_foo_1.o lib1.so
 	$(CC) use_foo_1.o -L. -lfoo -o $@
 	rm libfoo.so
 
-lib1.so: lib1.o lib1.map
-	$(CC) $(LDFLAGS) lib1.map lib1.o -o $@
+lib1.so: lib1.o
+	$(CC) -shared lib1.o -o $@
 
 use_foo_2: use_foo_2.o lib2.so
 	ln lib2.so libfoo.so
